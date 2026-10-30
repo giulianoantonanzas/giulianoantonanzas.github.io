@@ -2,13 +2,13 @@
   var root = document.documentElement;
   var meta = {
     es: {
-      title: 'Giuliano Antonanzas — Tech Lead · Full Stack · AWS',
-      description: 'Giuliano Antonanzas, Tech Lead y desarrollador full stack de Santa Fe, Argentina. AWS Certified. Lidero equipos y construyo productos serverless con TypeScript, React y Node.',
+      title: 'Giuliano Antonanzas',
+      description: 'Giuliano Antonanzas: Tech Lead en Crombie, constructor de productos en AWS y director de la Escuelita. Santa Fe, Argentina.',
       langBtn: 'EN', langLabel: 'Switch to English', themeLabel: 'Cambiar tema'
     },
     en: {
-      title: 'Giuliano Antonanzas — Tech Lead · Full Stack · AWS',
-      description: 'Giuliano Antonanzas, Tech Lead and full stack developer from Santa Fe, Argentina. AWS Certified. I lead teams and build serverless products with TypeScript, React and Node.',
+      title: 'Giuliano Antonanzas',
+      description: 'Giuliano Antonanzas: Tech Lead at Crombie, builder of products on AWS and director of Escuelita. Santa Fe, Argentina.',
       langBtn: 'ES', langLabel: 'Cambiar a español', themeLabel: 'Toggle theme'
     }
   };
@@ -50,6 +50,54 @@
     save('theme', next);
   });
 
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Reveal on scroll.
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (!('IntersectionObserver' in window) || reduced) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        ro.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    reveals.forEach(function (el) { ro.observe(el); });
+    // Anything already in view (hero) shows at once.
+    requestAnimationFrame(function () {
+      reveals.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+      });
+    });
+  }
+
+  // ---- Counters.
+  var nums = Array.prototype.slice.call(document.querySelectorAll('.num[data-count]'));
+  function animateCount(el) {
+    var target = parseInt(el.dataset.count, 10);
+    if (reduced || !isFinite(target)) { el.textContent = String(target); return; }
+    var start = performance.now(), dur = 900;
+    function tick(now) {
+      var p = Math.min(1, (now - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if ('IntersectionObserver' in window && nums.length) {
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        animateCount(e.target);
+        co.unobserve(e.target);
+      });
+    }, { threshold: .5 });
+    nums.forEach(function (n) { co.observe(n); });
+  }
+
   // ---- Highlight the section in view.
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav nav a[href^="#"]'));
   var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
@@ -61,6 +109,29 @@
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
     sections.forEach(function (s) { io.observe(s); });
+  }
+
+  // ---- Horizontal rail: drag to scroll with the mouse, wheel scrolls sideways.
+  var rail = document.querySelector('.rail-wrap');
+  if (rail) {
+    var down = false, startX = 0, startLeft = 0;
+    rail.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      down = true; startX = e.clientX; startLeft = rail.scrollLeft; rail.style.cursor = 'grabbing';
+    });
+    window.addEventListener('pointerup', function () { down = false; rail.style.cursor = ''; });
+    rail.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      rail.scrollLeft = startLeft - (e.clientX - startX);
+    });
+    rail.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      var atStart = rail.scrollLeft <= 0 && e.deltaY < 0;
+      var atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1 && e.deltaY > 0;
+      if (atStart || atEnd) return;
+      e.preventDefault();
+      rail.scrollLeft += e.deltaY;
+    }, { passive: false });
   }
 
   var y = document.getElementById('year');
