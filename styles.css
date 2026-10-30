@@ -65,7 +65,7 @@ img { max-width: 100%; display: block; }
 .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
 .section { padding: clamp(4rem, 8vw, 6.5rem) 0; }
 .big { font-size: clamp(1.1rem, 1.5vw, 1.3rem); line-height: 1.5; max-width: 60ch; }
-.split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: start; }
+.split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
 .skip { position: absolute; left: 8px; top: -60px; z-index: 100; background: var(--accent); color: #fff; padding: .5rem .8rem; border-radius: 8px; }
 .skip:focus { top: 8px; }
 .hl { color: var(--accent); }
@@ -126,7 +126,7 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 900; line-height: .95; 
 .diagram figcaption { margin-top: .6rem; text-align: center; }
 
 /* ---------- Metrics ---------- */
-.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin: 0; padding-top: 2.4rem; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin: 0; }
 .metrics > div { padding: .9rem 1rem; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
 .metrics dt { color: var(--ink-2); margin-bottom: .25rem; }
 .metrics dd { margin: 0; font: 800 2.2rem/1 var(--font-head); color: var(--ink); letter-spacing: -.03em; }
@@ -201,7 +201,7 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 900; line-height: .95; 
 .product p { color: var(--ink-2); }
 .product .big { color: var(--ink); }
 .product > a { margin-top: auto; color: var(--accent-2); font-weight: 600; }
-.products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+.products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; }
 .products .product h3 { font-size: 1.3rem; }
 .products .product p { font-size: .95rem; }
 .flow { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .25rem; margin: .4rem 0 .8rem; font-family: var(--font-mono); font-size: .78rem; }
@@ -226,7 +226,7 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 900; line-height: .95; 
 
 /* ---------- IA & AWS ---------- */
 .ia-aws { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.layers { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; }
+.layers { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; align-items: start; }
 .layer-card { padding: 1.6rem; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg); }
 .layer-card h3 { font-size: 1.45rem; margin-bottom: .9rem; }
 .layer-card .checklist { margin: 0; color: var(--ink-2); }
@@ -249,10 +249,9 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 900; line-height: .95; 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .hero-grid, .split, .layers { grid-template-columns: 1fr; }
-  .runbook, .products { grid-template-columns: 1fr 1fr; }
+  .runbook { grid-template-columns: 1fr 1fr; }
   .cases { grid-template-columns: 1fr; }
   .cases-mini { grid-template-columns: 1fr 1fr; }
-  .metrics { padding-top: .5rem; }
   .photo-team { max-width: 520px; }
 }
 @media (max-width: 640px) {
