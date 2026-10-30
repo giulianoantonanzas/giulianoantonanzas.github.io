@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202610300450">
+  <link rel="stylesheet" href="styles.css?v=202610300505">
 
   <script type="application/ld+json">
   {
@@ -423,8 +423,8 @@
     <section id="construyendo" class="wrap section">
       <p class="mono label reveal">05 · <span lang="es">lo que estoy construyendo</span><span lang="en">what I'm building</span></p>
       <h2 class="reveal"><span lang="es">Productos propios, cada uno con su arquitectura.</span><span lang="en">Own products, each with its architecture.</span></h2>
-      <p class="big reveal" lang="es">Fuera del trabajo. Todo en AWS, todo hecho solo, todo con factura chica.</p>
-      <p class="big reveal" lang="en">Outside work. All on AWS, all built alone, all on a small bill.</p>
+      <p class="big reveal" lang="es">Fuera del trabajo. En AWS, hechos solo y con factura chica.</p>
+      <p class="big reveal" lang="en">Outside work. On AWS, built alone and on a small bill.</p>
 
       <article class="product featured reveal">
         <header class="product-head">
@@ -487,16 +487,76 @@
           <p lang="en">A bot that simulates, with virtual credits, whether "buying the dip" on the S&amp;P 500 pays off: six portfolios against SPY, backtest since 2007, checks every 5 minutes during market hours. Under 1 USD a month.</p>
           <ol class="flow"><li>EventBridge</li><li>Lambda · Python</li><li>DynamoDB · S3</li><li>API Gateway</li><li><span lang="es">Navegador</span><span lang="en">Browser</span></li></ol>
         </article>
-        <article class="product reveal">
-          <header>
-            <p class="mono label"><span lang="es">software a medida · 2026</span><span lang="en">custom software · 2026</span></p>
-            <h3><span lang="es">Demos para empresas</span><span lang="en">Demos for businesses</span></h3>
-          </header>
-          <p lang="es">Llego a la reunión con algo que ya anda: conciliación de facturación para clínicas, partes de obra que se vuelven certificados, lectura de medidores por foto. Procesan archivos reales en el navegador; el resto se construye en un piloto.</p>
-          <p lang="en">I show up to the meeting with something that already works: billing reconciliation for clinics, site reports that become certificates, meter reading from a photo. They process real files in the browser; the rest gets built in a pilot.</p>
-          <ol class="flow"><li><span lang="es">Archivos reales</span><span lang="en">Real files</span></li><li>Core TypeScript + tests</li><li>Excel · PDF · Word</li><li>Claude API</li></ol>
+      </div>
+
+      <div class="cases-head">
+        <p class="mono label reveal">05b · <span lang="es">software a medida para empresas</span><span lang="en">custom software for businesses</span></p>
+        <h3 class="cases-title reveal"><span lang="es">Tres problemas de empresas reales, resueltos con software que ya funciona.</span><span lang="en">Three real-world business problems, solved with software that already works.</span></h3>
+        <p class="big reveal" lang="es">
+          Así trabajo con empresas: entiendo el problema, construyo una solución funcional con sus propios
+          formatos (Excel, PDF, fotos, audios de WhatsApp) y la llevo a la primera reunión andando. Después
+          se ajusta en un piloto con datos reales. Estos son los últimos tres casos.
+        </p>
+        <p class="big reveal" lang="en">
+          This is how I work with businesses: I understand the problem, build a working solution around their
+          own formats (Excel, PDF, photos, WhatsApp audio) and bring it to the first meeting already running.
+          Then it gets tuned in a pilot with real data. These are the latest three cases.
+        </p>
+      </div>
+
+      <div class="cases">
+        <article class="case-card reveal">
+          <p class="mono label"><span lang="es">clínicas y sanatorios · facturación</span><span lang="en">clinics and hospitals · billing</span></p>
+          <h3><span lang="es">Los débitos de las obras sociales se perdían sin reclamar</span><span lang="en">Health-insurer deductions were going unclaimed</span></h3>
+          <dl>
+            <dt class="mono"><span lang="es">problema</span><span lang="en">problem</span></dt>
+            <dd lang="es">Cada mes la clínica factura cientos de prestaciones y la obra social liquida en un PDF con débitos que hay que descubrir renglón por renglón. Entre el volumen y los plazos de refacturación, parte de esa plata vencía sin reclamo.</dd>
+            <dd lang="en">Every month the clinic bills hundreds of services and the insurer settles in a PDF full of deductions that have to be found line by line. Between the volume and the rebilling deadlines, part of that money expired unclaimed.</dd>
+            <dt class="mono"><span lang="es">solución</span><span lang="en">solution</span></dt>
+            <dd lang="es">Un conciliador que cruza el Excel facturado con el PDF de la liquidación, identifica cada débito con su causa, dice cuáles se pueden reclamar y hasta cuándo, y genera el informe en PDF y las notas de refacturación en Word. También una vista agregada para la asociación de clínicas, por obra social y por causa, sin datos de pacientes.</dd>
+            <dd lang="en">A reconciler that matches the billed Excel against the settlement PDF, identifies each deduction with its cause, says which ones can be claimed and by when, and generates the PDF report and the rebilling letters in Word. Plus an aggregated view for the clinics' association, by insurer and by cause, with no patient data.</dd>
+            <dt class="mono"><span lang="es">resultado</span><span lang="en">outcome</span></dt>
+            <dd lang="es">De días de trabajo manual a minutos: la clínica sube dos archivos y sale con la lista de qué reclamar, en qué orden y con qué papeles. Todo corre en el navegador: los datos de salud no salen de la clínica.</dd>
+            <dd lang="en">From days of manual work to minutes: the clinic uploads two files and leaves with the list of what to claim, in which order and with which documents. It all runs in the browser: health data never leaves the clinic.</dd>
+          </dl>
+          <ol class="flow"><li>Excel + PDF</li><li><span lang="es">Cruce renglón a renglón</span><span lang="en">Line-by-line matching</span></li><li><span lang="es">Causa · plazo · papeles</span><span lang="en">Cause · deadline · docs</span></li><li>PDF + Word</li></ol>
+        </article>
+
+        <article class="case-card reveal">
+          <p class="mono label"><span lang="es">obra vial · certificación</span><span lang="en">road construction · certification</span></p>
+          <h3><span lang="es">Los partes diarios llegaban por WhatsApp y el certificado se armaba a mano</span><span lang="en">Daily reports came in over WhatsApp and the certificate was built by hand</span></h3>
+          <dl>
+            <dt class="mono"><span lang="es">problema</span><span lang="en">problem</span></dt>
+            <dd lang="es">Los capataces mandan audios y fotos desde la obra; la oficina técnica los transcribe a una planilla y arma el certificado mensual a fin de mes, cuando ya es tarde para ver un atraso. La redeterminación de precios se calculaba aparte y a última hora.</dd>
+            <dd lang="en">Foremen send audio and photos from the site; the technical office transcribes them into a spreadsheet and builds the monthly certificate at month end, when it's too late to catch a delay. Price redetermination was calculated separately, at the last minute.</dd>
+            <dt class="mono"><span lang="es">solución</span><span lang="en">solution</span></dt>
+            <dd lang="es">Un número de WhatsApp que entiende el parte (ítem del contrato, cantidad, tramo, cuadrilla), pide fotos y ubicación, y lo confirma con el capataz. Cada parte confirmado se suma solo al certificado, que avisa qué podría observar la inspección: ítems que superan lo contratado, atrasos contra el plan, avance sin fotos. La redeterminación calcula el factor mes a mes y marca cuándo corresponde pedirla.</dd>
+            <dd lang="en">A WhatsApp number that understands the report (contract item, quantity, section, crew), asks for photos and location, and confirms it with the foreman. Each confirmed report rolls into the certificate on its own, which flags what the inspector might object to: items over contract, delays against plan, progress without photos. Redetermination computes the factor month by month and marks when to request it.</dd>
+            <dt class="mono"><span lang="es">resultado</span><span lang="en">outcome</span></dt>
+            <dd lang="es">El avance se ve el mismo día, no a fin de mes. Certificado y redeterminación salen en Excel con las fórmulas a la vista, listos para auditar. Las reglas resuelven la mayoría de los partes; para el resto hay un modo con IA.</dd>
+            <dd lang="en">Progress is visible the same day, not at month end. Certificate and redetermination come out in Excel with the formulas visible, ready to audit. Rules handle most reports; there's an AI mode for the rest.</dd>
+          </dl>
+          <ol class="flow"><li>WhatsApp · <span lang="es">audio</span><span lang="en">audio</span></li><li><span lang="es">Parte estructurado</span><span lang="en">Structured report</span></li><li><span lang="es">Certificado mensual</span><span lang="en">Monthly certificate</span></li><li><span lang="es">Redeterminación</span><span lang="en">Redetermination</span></li></ol>
+        </article>
+
+        <article class="case-card reveal">
+          <p class="mono label"><span lang="es">cooperativa de servicios · medidores</span><span lang="en">utilities cooperative · meters</span></p>
+          <h3><span lang="es">Las lecturas de medidores se tipeaban en campo y los errores aparecían en la factura</span><span lang="en">Meter readings were typed in the field and the errors showed up on the bill</span></h3>
+          <dl>
+            <dt class="mono"><span lang="es">problema</span><span lang="en">problem</span></dt>
+            <dd lang="es">El lecturista anota a mano, el error se descubre cuando el socio reclama la factura, y no hay respaldo de lo que decía el medidor ese día.</dd>
+            <dd lang="en">The meter reader writes it down by hand, the error surfaces when the member disputes the bill, and there's no evidence of what the meter said that day.</dd>
+            <dt class="mono"><span lang="es">solución</span><span lang="en">solution</span></dt>
+            <dd lang="es">Una app en la que el lecturista saca la foto y la lectura se carga sola: lee la serie y el contador, la valida contra el historial del suministro (lectura menor, vuelta de contador, salto, caída, foto dudosa) y, si algo no cierra, pide una segunda foto en el momento. El supervisor ve el recorrido en vivo y exporta al sistema comercial con la foto y su huella como respaldo. La misma app arma las actas de inspección y publica los cortes programados en todos los canales desde una sola carga.</dd>
+            <dd lang="en">An app where the reader takes a photo and the reading loads itself: it reads the serial and the counter, validates it against the supply's history (lower reading, rollover, spike, drop, doubtful photo) and, if something doesn't add up, asks for a second photo on the spot. The supervisor watches the route live and exports to the billing system with the photo and its hash as evidence. The same app drafts inspection reports and publishes scheduled outages to every channel from a single entry.</dd>
+            <dt class="mono"><span lang="es">resultado</span><span lang="en">outcome</span></dt>
+            <dd lang="es">Los errores se resuelven en la vereda, no en la factura. Cada lectura queda con foto, fecha y validación; el OCR corre en el celular sin internet.</dd>
+            <dd lang="en">Errors get resolved on the sidewalk, not on the bill. Every reading is stored with photo, date and validation; the OCR runs on the phone without internet.</dd>
+          </dl>
+          <ol class="flow"><li><span lang="es">Foto del medidor</span><span lang="en">Meter photo</span></li><li>OCR</li><li><span lang="es">Validación vs. historial</span><span lang="en">Validation vs. history</span></li><li><span lang="es">Sistema comercial</span><span lang="en">Billing system</span></li></ol>
         </article>
       </div>
+      <p class="mono foot cases-foot"><span lang="es">stack: vite · react · typescript · vitest · exceljs · pdf.js · jspdf · docx · tesseract.js · claude api</span><span lang="en">stack: vite · react · typescript · vitest · exceljs · pdf.js · jspdf · docx · tesseract.js · claude api</span></p>
     </section>
 
     <!-- ===================== IA & AWS ===================== -->
@@ -561,6 +621,6 @@
     </p>
   </footer>
 
-  <script src="script.js?v=202610300450"></script>
+  <script src="script.js?v=202610300505"></script>
 </body>
 </html>
