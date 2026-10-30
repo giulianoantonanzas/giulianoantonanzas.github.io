@@ -183,15 +183,20 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 900; line-height: .95; 
 .links { display: flex; flex-wrap: wrap; gap: .5rem; }
 .links a { font-family: var(--font-mono); font-size: .82rem; padding: .45rem .8rem; border-radius: 8px; border: 1px solid color-mix(in srgb, var(--bg) 40%, transparent); transition: background .15s, color .15s; }
 .links a:hover { background: var(--bg); color: var(--ink); }
-.syllabus { align-self: center; padding: 1.4rem 1.5rem; border-radius: var(--radius); background: color-mix(in srgb, var(--bg) 6%, transparent); border: 1px solid color-mix(in srgb, var(--bg) 25%, transparent); }
-.syllabus ol { display: grid; gap: .55rem; font-size: .95rem; }
-.syllabus .k { color: var(--accent); margin-right: .6rem; }
-.syllabus .foot { margin: 1.2rem 0 0; color: color-mix(in srgb, var(--bg) 65%, transparent); }
+.esc-stats { align-self: center; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; }
+.esc-stats > div { padding: 1rem 1.1rem; border-radius: 12px; background: color-mix(in srgb, var(--bg) 6%, transparent); border: 1px solid color-mix(in srgb, var(--bg) 25%, transparent); }
+.esc-stats > div:nth-child(n+4) { grid-column: 1 / -1; }
+.esc-stats dt { color: color-mix(in srgb, var(--bg) 65%, transparent); margin-bottom: .3rem; }
+.esc-stats dd { margin: 0; font: 800 2rem/1.05 var(--font-head); letter-spacing: -.03em; color: var(--accent); }
+.esc-stats > div:nth-child(n+4) dd { font-size: 1.4rem; color: var(--bg); }
 
 /* ---------- Productos ---------- */
 .product { padding: 1.5rem 1.5rem 1.4rem; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); display: flex; flex-direction: column; }
 .product.featured { margin-top: 1.5rem; border-left: 4px solid var(--accent-2); }
 .product header { margin-bottom: .6rem; }
+.product-head { display: flex; align-items: center; gap: 1.1rem; }
+.product-logo { width: 72px; height: 72px; border-radius: 18px; flex: none; box-shadow: var(--shadow); }
+.tagline { margin: .2rem 0 0; font-family: var(--font-head); font-weight: 500; color: var(--ink-2); }
 .product h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
 .product p { color: var(--ink-2); }
 .product .big { color: var(--ink); }
@@ -247,6 +252,8 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 900; line-height: .95; 
   .nav nav a:last-child { padding-right: 2rem; }
   html { scroll-padding-top: 100px; }
   .runbook, .products, .cases-mini { grid-template-columns: 1fr; }
+  .product-head { align-items: flex-start; }
+  .product-logo { width: 56px; height: 56px; border-radius: 14px; }
   .graph { --lane-w: 24px; }
   .commit { gap: .6rem; }
   .cta .btn { flex: 1 1 auto; justify-content: center; }
