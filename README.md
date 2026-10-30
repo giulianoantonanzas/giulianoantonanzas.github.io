@@ -24,6 +24,12 @@ Para verlo en local no hace falta nada más que abrir `index.html`, o:
 python3 -m http.server 8080
 ```
 
+## Caché
+
+`index.html` enlaza `styles.css?v=…` y `script.js?v=…`. Al cambiar el CSS o el JS, subí ese número
+(o la fecha) en los dos enlaces: así los navegadores que ya visitaron el sitio no mezclan HTML nuevo
+con estilos viejos.
+
 ## Publicar
 
 GitHub Pages sirve la rama `main` desde la raíz del repositorio. Cada push a `main` actualiza el sitio
