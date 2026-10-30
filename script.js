@@ -3,12 +3,12 @@
   var meta = {
     es: {
       title: 'Giuliano Antonanzas',
-      description: 'Giuliano Antonanzas: Tech Lead en Crombie, constructor de productos en AWS y director de la Escuelita. Santa Fe, Argentina.',
+      description: 'Giuliano Antonanzas: Tech Lead y desarrollador full stack, especialista en IA aplicada y AWS. Lidera equipos, construye productos y enseña a programar.',
       langBtn: 'EN', langLabel: 'Switch to English', themeLabel: 'Cambiar tema'
     },
     en: {
       title: 'Giuliano Antonanzas',
-      description: 'Giuliano Antonanzas: Tech Lead at Crombie, builder of products on AWS and director of Escuelita. Santa Fe, Argentina.',
+      description: 'Giuliano Antonanzas: Tech Lead and full stack developer, applied AI and AWS specialist. Leads teams, builds products and teaches people to code.',
       langBtn: 'ES', langLabel: 'Cambiar a español', themeLabel: 'Toggle theme'
     }
   };
@@ -27,17 +27,8 @@
     if (lb) { lb.textContent = meta[lang].langBtn; lb.setAttribute('aria-label', meta[lang].langLabel); }
     var tb = document.getElementById('theme-toggle');
     if (tb) tb.setAttribute('aria-label', meta[lang].themeLabel);
+    drawGraph();
   }
-  var saved = read('lang');
-  var fromQuery = /[?&]lang=(es|en)\b/.exec(location.search);
-  var initial = fromQuery ? fromQuery[1]
-    : saved || ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
-  setLang(initial);
-  document.getElementById('lang-toggle').addEventListener('click', function () {
-    var next = root.dataset.lang === 'en' ? 'es' : 'en';
-    setLang(next);
-    save('lang', next);
-  });
 
   // ---- Theme: follows the system unless the visitor picked one.
   var savedTheme = read('theme');
@@ -52,6 +43,74 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ---- Git graph: draw the lane lines and branch/merge curves between commit dots.
+  var graph = document.getElementById('graph');
+  var svgNS = 'http://www.w3.org/2000/svg';
+  function drawGraph() {
+    if (!graph) return;
+    var old = graph.querySelector('svg.lines');
+    if (old) old.remove();
+    var svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('class', 'lines');
+    svg.setAttribute('aria-hidden', 'true');
+    var box = graph.getBoundingClientRect();
+    var commits = Array.prototype.slice.call(graph.querySelectorAll('.commit'));
+    var colors = { 0: 'var(--l0)', 1: 'var(--l1)', 2: 'var(--l2)' };
+    function center(c) {
+      var d = c.querySelector('.dot').getBoundingClientRect();
+      return { x: d.left + d.width / 2 - box.left, y: d.top + d.height / 2 - box.top };
+    }
+    function path(d, color, dashed) {
+      var p = document.createElementNS(svgNS, 'path');
+      p.setAttribute('d', d);
+      p.setAttribute('stroke', color);
+      if (dashed) p.setAttribute('stroke-dasharray', '4 5');
+      svg.appendChild(p);
+    }
+    var last = {};
+    commits.forEach(function (c) {
+      var lane = c.dataset.lane, pt = center(c);
+      if (last[lane]) path('M' + last[lane].x + ' ' + last[lane].y + ' L' + pt.x + ' ' + pt.y, colors[lane]);
+      if (c.dataset.from) {
+        var from = document.getElementById(c.dataset.from);
+        if (from) {
+          var f = center(from), midY = (f.y + pt.y) / 2;
+          path('M' + f.x + ' ' + f.y + ' C' + f.x + ' ' + midY + ', ' + pt.x + ' ' + midY + ', ' + pt.x + ' ' + pt.y, colors[lane]);
+        }
+      }
+      if (c.dataset.merge) {
+        var m = document.getElementById(c.dataset.merge);
+        if (m) {
+          var s = center(m), my = (s.y + pt.y) / 2;
+          path('M' + s.x + ' ' + s.y + ' C' + s.x + ' ' + my + ', ' + pt.x + ' ' + my + ', ' + pt.x + ' ' + pt.y, colors[m.dataset.lane], true);
+        }
+      }
+      last[lane] = pt;
+    });
+    // Open branches keep running to the bottom of the graph.
+    Object.keys(last).forEach(function (lane) {
+      if (lane === '0') return;
+      path('M' + last[lane].x + ' ' + last[lane].y + ' L' + last[lane].x + ' ' + box.height, colors[lane], true);
+    });
+    graph.insertBefore(svg, graph.firstChild);
+  }
+
+  var saved = read('lang');
+  var fromQuery = /[?&]lang=(es|en)\b/.exec(location.search);
+  var initial = fromQuery ? fromQuery[1]
+    : saved || ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
+  setLang(initial);
+  document.getElementById('lang-toggle').addEventListener('click', function () {
+    var next = root.dataset.lang === 'en' ? 'es' : 'en';
+    setLang(next);
+    save('lang', next);
+  });
+
+  var resizeTimer;
+  window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawGraph, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawGraph);
+  window.addEventListener('load', drawGraph);
+
   // ---- Reveal on scroll.
   var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   if (!('IntersectionObserver' in window) || reduced) {
@@ -65,7 +124,6 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
     reveals.forEach(function (el) { ro.observe(el); });
-    // Anything already in view (hero) shows at once.
     requestAnimationFrame(function () {
       reveals.forEach(function (el) {
         if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
@@ -109,29 +167,6 @@
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
     sections.forEach(function (s) { io.observe(s); });
-  }
-
-  // ---- Horizontal rail: drag to scroll with the mouse, wheel scrolls sideways.
-  var rail = document.querySelector('.rail-wrap');
-  if (rail) {
-    var down = false, startX = 0, startLeft = 0;
-    rail.addEventListener('pointerdown', function (e) {
-      if (e.pointerType !== 'mouse') return;
-      down = true; startX = e.clientX; startLeft = rail.scrollLeft; rail.style.cursor = 'grabbing';
-    });
-    window.addEventListener('pointerup', function () { down = false; rail.style.cursor = ''; });
-    rail.addEventListener('pointermove', function (e) {
-      if (!down) return;
-      rail.scrollLeft = startLeft - (e.clientX - startX);
-    });
-    rail.addEventListener('wheel', function (e) {
-      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
-      var atStart = rail.scrollLeft <= 0 && e.deltaY < 0;
-      var atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1 && e.deltaY > 0;
-      if (atStart || atEnd) return;
-      e.preventDefault();
-      rail.scrollLeft += e.deltaY;
-    }, { passive: false });
   }
 
   var y = document.getElementById('year');
