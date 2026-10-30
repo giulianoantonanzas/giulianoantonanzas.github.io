@@ -27,6 +27,9 @@
     if (lb) { lb.textContent = meta[lang].langBtn; lb.setAttribute('aria-label', meta[lang].langLabel); }
     var tb = document.getElementById('theme-toggle');
     if (tb) tb.setAttribute('aria-label', meta[lang].themeLabel);
+    Array.prototype.forEach.call(document.querySelectorAll('.cv-link'), function (a) {
+      a.setAttribute('href', 'assets/cv-giuliano-antonanzas-' + lang + '.pdf');
+    });
     drawGraph();
   }
 

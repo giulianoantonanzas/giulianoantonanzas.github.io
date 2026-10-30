@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 · Giuliano Antonanzas</title>
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css?v=202610300600">
+  <style>
+    .nf { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 2rem; }
+    .nf h1 { font-size: clamp(3rem, 12vw, 7rem); line-height: 1; }
+    .nf h1 span { color: var(--accent); }
+    .nf .cta { justify-content: center; }
+  </style>
+</head>
+<body>
+  <main class="nf">
+    <div>
+      <p class="mono label">HTTP 404 · <span lang="es">rama no encontrada</span><span lang="en">branch not found</span></p>
+      <h1>4<span>0</span>4</h1>
+      <p class="big" lang="es">Esa página no existe (o la borré en un rebase).</p>
+      <p class="big" lang="en">That page doesn't exist (or I dropped it in a rebase).</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="/"><span lang="es">Volver al inicio</span><span lang="en">Back home</span></a>
+        <a class="btn" href="mailto:giulianoantonanzas@gmail.com"><span lang="es">Escribime</span><span lang="en">Email me</span></a>
+      </div>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var l = /[?&]lang=(es|en)\b/.exec(location.search);
+      var saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
+      var lang = l ? l[1] : (saved || ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en'));
+      document.documentElement.lang = lang; document.documentElement.dataset.lang = lang;
+      var t = null; try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</body>
+</html>

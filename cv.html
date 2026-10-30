@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV · Giuliano Antonanzas</title>
+  <meta name="description" content="CV de Giuliano Antonanzas: Tech Lead y desarrollador full stack, especialista en IA aplicada y AWS.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://giulianoantonanzas.github.io/cv.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* The CV is a single printable page set. The PDFs in assets/ are generated from this file. */
+    :root { --ink: #141a1f; --ink-2: #555d66; --line: #d3cfc3; --accent: #ff4d1f; --paper: #fff; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body [lang="en"] { display: none; }
+    :root[data-lang="en"] body [lang="en"] { display: revert; }
+    :root[data-lang="en"] body [lang="es"] { display: none; }
+    html { background: #e9e7e0; }
+    body { margin: 0; color: var(--ink); font: 400 10.4pt/1.42 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .page { max-width: 210mm; margin: 0 auto; background: var(--paper); padding: 14mm 15mm 13mm; min-height: 297mm; }
+    .tools { max-width: 210mm; margin: 0 auto; display: flex; gap: .5rem; padding: .6rem 0; font: 500 .8rem "IBM Plex Mono", monospace; }
+    .tools a, .tools button { border: 1px solid var(--ink); background: #fff; color: var(--ink); border-radius: 8px; padding: .35rem .7rem; font: inherit; cursor: pointer; text-decoration: none; }
+    h1, h2, h3 { font-family: "Archivo", "Inter", sans-serif; margin: 0; letter-spacing: -.02em; line-height: 1.05; }
+    h1 { font-size: 24pt; font-weight: 900; letter-spacing: -.035em; }
+    h2 { font-size: 8.5pt; font-family: "IBM Plex Mono", monospace; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: .12em; margin: 0 0 6pt; padding-bottom: 3pt; border-bottom: 1px solid var(--line); }
+    h3 { font-size: 10.8pt; font-weight: 700; }
+    p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    .mono { font-family: "IBM Plex Mono", monospace; font-size: 8.4pt; color: var(--ink-2); }
+    .role { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 12pt; margin: 3pt 0 6pt; }
+    .role .hl { color: var(--accent); }
+    .head { display: flex; justify-content: space-between; gap: 10mm; align-items: flex-start; padding-bottom: 7mm; margin-bottom: 6mm; border-bottom: 2px solid var(--ink); }
+    .head img { width: 26mm; height: 26mm; border-radius: 8mm; object-fit: cover; flex: none; }
+    .contact { display: flex; flex-wrap: wrap; gap: 2pt 10pt; }
+    .contact li::before { content: "·"; color: var(--accent); margin-right: 5pt; }
+    .contact li:first-child::before { content: none; }
+    section { margin-bottom: 6.5mm; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 9mm; }
+    .job { margin-bottom: 4.5mm; }
+    .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 6pt; }
+    .job .mono { white-space: nowrap; }
+    .job p { color: var(--ink-2); }
+    .bullets { margin-top: 2pt; }
+    .bullets li { position: relative; padding-left: 10pt; margin-bottom: 1.5pt; }
+    .bullets li::before { content: ""; position: absolute; left: 0; top: .55em; width: 5pt; height: 1.5px; background: var(--accent); }
+    .sub { margin: 3pt 0 0 0; padding-left: 10pt; border-left: 2px solid var(--line); }
+    .sub li { margin-bottom: 3.5pt; }
+    .sub strong { font-weight: 600; }
+    .tags { display: flex; flex-wrap: wrap; gap: 3pt; }
+    .tags li { font: 500 8.2pt "IBM Plex Mono", monospace; padding: 1.5pt 5pt; border: 1px solid var(--line); border-radius: 4pt; }
+    .kv li { display: flex; gap: 6pt; margin-bottom: 2pt; }
+    .kv .mono { min-width: 28mm; }
+    .page-break { break-before: page; }
+    @page { size: A4; margin: 0; }
+    @media print {
+      html { background: #fff; }
+      .tools { display: none; }
+      .page { max-width: none; min-height: 0; padding: 14mm 15mm 13mm; }
+      a[href^="http"]::after { content: none; }
+    }
+    @media (max-width: 640px) { .page { padding: 8mm 6mm; } .grid { grid-template-columns: 1fr; } .head { flex-direction: column-reverse; } }
+  </style>
+</head>
+<body>
+  <div class="tools">
+    <a href="./"><span lang="es">← Volver al sitio</span><span lang="en">← Back to the site</span></a>
+    <button type="button" id="lang-toggle">EN</button>
+    <button type="button" onclick="window.print()"><span lang="es">Imprimir / guardar PDF</span><span lang="en">Print / save PDF</span></button>
+  </div>
+
+  <main class="page">
+    <header class="head">
+      <div>
+        <h1>Giuliano Antonanzas</h1>
+        <p class="role">Tech Lead · Full Stack · <span class="hl">IA</span> &amp; <span class="hl">AWS</span></p>
+        <ul class="contact mono">
+          <li>Entre Ríos, Argentina · GMT-3 · <span lang="es">remoto</span><span lang="en">remote</span></li>
+          <li><a href="mailto:giulianoantonanzas@gmail.com">giulianoantonanzas@gmail.com</a></li>
+          <li><a href="https://giulianoantonanzas.github.io/">giulianoantonanzas.github.io</a></li>
+          <li><a href="https://www.linkedin.com/in/giuliano-antonanzas/">linkedin.com/in/giuliano-antonanzas</a></li>
+          <li><a href="https://github.com/giulianoantonanzas">github.com/giulianoantonanzas</a></li>
+        </ul>
+      </div>
+      <img src="assets/giuliano.jpg" alt="">
+    </header>
+
+    <section>
+      <h2><span lang="es">Perfil</span><span lang="en">Profile</span></h2>
+      <p lang="es">Desarrollador full stack desde 2021 y Tech Lead desde 2023 en Crombie. Lideré cinco equipos (de 5 a 16 personas) para clientes de Estados Unidos y Argentina en fintech, logística, eventos e IoT, y dirigí las dos primeras ediciones de la Escuelita, la incubadora de talento de la empresa. Especialista en IA aplicada y AWS Serverless (dos certificaciones), con productos propios en producción. Me interesan los equipos que necesitan orden, los productos que hay que construir y los sistemas que tienen que costar poco.</p>
+      <p lang="en">Full stack developer since 2021 and Tech Lead since 2023 at Crombie. I led five teams (5 to 16 people) for clients in the US and Argentina across fintech, logistics, events and IoT, and directed the first two editions of Escuelita, the company's talent incubator. Applied AI and AWS Serverless specialist (two certifications) with my own products in production. I'm drawn to teams that need order, products that need building and systems that need to run cheap.</p>
+    </section>
+
+    <section>
+      <h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2>
+
+      <article class="job">
+        <div class="job-head"><h3>Crombie · <span lang="es">Developer</span><span lang="en">Developer</span></h3><span class="mono">2026 – <span lang="es">actualidad</span><span lang="en">present</span></span></div>
+        <ul class="bullets">
+          <li lang="es"><strong>NFTYDoor</strong> (fintech hipotecaria, EE.UU.): backend de identidad, crédito y co-prestatarios. El equipo me volvió a convocar por haber armado la base del backend en 2022.</li>
+          <li lang="en"><strong>NFTYDoor</strong> (US mortgage fintech): identity, credit and co-borrower backend. The team called me back on the strength of the backend foundations I built in 2022.</li>
+          <li lang="es"><strong>La Muni en tu Celu</strong> (Municipalidad de Santa Fe): app ciudadana de trámites, turnos, pagos y avisos. Desarrollo y revisión de seguridad de la API.</li>
+          <li lang="en"><strong>La Muni en tu Celu</strong> (City of Santa Fe): citizen app for procedures, appointments, payments and alerts. Development and API security review.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head"><h3>Crombie · Tech Lead</h3><span class="mono"><span lang="es">ene</span><span lang="en">Jan</span> 2023 – 2026</span></div>
+        <p lang="es">Cinco equipos, cinco proyectos. Uno a uno, sprints medibles, entornos y deploys automáticos, comunicación con el cliente (en inglés cuando hizo falta) y código cuando faltaba alguien.</p>
+        <p lang="en">Five teams, five projects. One-on-ones, measurable sprints, environments and automated deploys, client communication (in English when needed) and code whenever someone was missing.</p>
+        <ul class="sub">
+          <li lang="es"><strong>Skylightlending · NFTYDoor</strong> <span class="mono">feb 2024 – 2026 · 16 personas</span><br>Plataforma de préstamos para paneles solares. Revertí una rotación altísima, separé el repositorio y la infraestructura del producto principal y migré a AWS Serverless con SST, con menos costo. La relación con el cliente extendió el proyecto más de un año.</li>
+          <li lang="en"><strong>Skylightlending · NFTYDoor</strong> <span class="mono">Feb 2024 – 2026 · 16 people</span><br>Solar-panel lending platform. Reversed sky-high turnover, split the repository and infrastructure away from the main product and migrated to AWS Serverless with SST at lower cost. The client relationship extended the project by more than a year.</li>
+          <li lang="es"><strong>Fulter</strong> <span class="mono">sep 2023 – feb 2024 · 7 personas</span><br>Plataforma logística de embarques sobre un sistema legacy, llave en mano y con fecha. Apps publicadas en las tiendas; el cliente continuó el proyecto después del MVP. AWS, React Native, Next.js, Node.js, MySQL.</li>
+          <li lang="en"><strong>Fulter</strong> <span class="mono">Sep 2023 – Feb 2024 · 7 people</span><br>Turnkey shipment-logistics platform on top of a legacy system, with a hard deadline. Apps published in the stores; the client continued the project after the MVP. AWS, React Native, Next.js, Node.js, MySQL.</li>
+          <li lang="es"><strong>Skedules Live</strong> <span class="mono">jun – sep 2023 · 7 personas</span><br>Plataforma de eventos y calendarios. Primer proyecto liderado en inglés; Scrum, entornos develop/staging/prod y deploys automáticos desde cero. AWS, TypeScript, Next.js, PostgreSQL.</li>
+          <li lang="en"><strong>Skedules Live</strong> <span class="mono">Jun – Sep 2023 · 7 people</span><br>Events and calendar platform. First project led in English; Scrum, develop/staging/prod environments and automated deploys from scratch. AWS, TypeScript, Next.js, PostgreSQL.</li>
+          <li lang="es"><strong>Qwiky</strong> <span class="mono">abr – jun 2023 · 7 personas</span><br>Red social para bloggers: recomendación de publicaciones, escalabilidad y app iOS/Android. AWS, TypeScript, React Native, NestJS, PostgreSQL.</li>
+          <li lang="en"><strong>Qwiky</strong> <span class="mono">Apr – Jun 2023 · 7 people</span><br>Social network for bloggers: post recommendations, scalability and an iOS/Android app. AWS, TypeScript, React Native, NestJS, PostgreSQL.</li>
+          <li lang="es"><strong>Datision</strong> <span class="mono">ene – abr 2023 · 5 personas</span><br>Plataforma de alertas para dispositivos IoT con IA. Entré a un equipo en dificultades, lo estabilicé y cumplimos los objetivos. TypeScript, Python, React, Django, PostgreSQL.</li>
+          <li lang="en"><strong>Datision</strong> <span class="mono">Jan – Apr 2023 · 5 people</span><br>Alert platform for AI-powered IoT devices. Joined a struggling team, stabilised it and met the goals. TypeScript, Python, React, Django, PostgreSQL.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head"><h3>Crombie · <span lang="es">Director de la Escuelita</span><span lang="en">Escuelita Director</span></h3><span class="mono">oct 2022 – mar 2023 · jun – <span lang="es">dic</span><span lang="en">Dec</span> 2023</span></div>
+        <p lang="es">Incubadora de talento de Crombie: gente sin experiencia que aprende los frameworks de la industria y entra a proyectos reales. Dirigí las dos primeras ediciones (8 h semanales): selección, contenido, clases, feedback, recuperatorios y recomendación de quién estaba listo para un proyecto. Material: github.com/escuelitacrombie.</p>
+        <p lang="en">Crombie's talent incubator: people with no experience who learn the industry's frameworks and join real projects. I directed the first two editions (8 h a week): selection, content, classes, feedback, catch-up lessons and recommending who was ready for a project. Material: github.com/escuelitacrombie.</p>
+      </article>
+
+      <article class="job">
+        <div class="job-head"><h3>Crombie · Full Stack Developer</h3><span class="mono">abr 2021 – <span lang="es">ene</span><span lang="en">Jan</span> 2023</span></div>
+        <ul class="bullets">
+          <li lang="es"><strong>NFTYDoor</strong> (2022): fintech de préstamos hipotecarios. Primera vez con AWS Serverless; armé la base del backend y terminé liderando su desarrollo. Serverless Framework, React, TypeScript.</li>
+          <li lang="en"><strong>NFTYDoor</strong> (2022): mortgage-lending fintech. First time with AWS Serverless; built the backend foundations and ended up leading its development. Serverless Framework, React, TypeScript.</li>
+          <li lang="es"><strong>WellUnity</strong> (2021): plataforma de bienestar con pagos y clases en vivo. Integré Stripe, Twilio y las APIs de streaming. React, TypeScript.</li>
+          <li lang="en"><strong>WellUnity</strong> (2021): wellness platform with payments and live classes. Integrated Stripe, Twilio and the streaming APIs. React, TypeScript.</li>
+          <li lang="es"><strong>Recreo</strong> (2021): app y sitio de eventos de la provincia de Buenos Aires. TypeScript, React, Laravel, GraphQL, MySQL.</li>
+          <li lang="en"><strong>Recreo</strong> (2021): events app and website for the province of Buenos Aires. TypeScript, React, Laravel, GraphQL, MySQL.</li>
+        </ul>
+      </article>
+    </section>
+
+    <div class="grid">
+      <section>
+        <h2><span lang="es">Productos propios</span><span lang="en">Own products</span></h2>
+        <ul class="bullets">
+          <li lang="es"><strong>Seguridar</strong> (2025 –): alerta a padres ante señales de riesgo en los dispositivos de sus hijos, sin vigilarlos. Agentes Windows/Android, motor de visión con CLIP, API NestJS, PostgreSQL, panel Next.js; Terraform, ECS, RDS, GitHub Actions.</li>
+          <li lang="en"><strong>Seguridar</strong> (2025 –): alerts parents to risk signals on their kids' devices without surveillance. Windows/Android agents, CLIP vision engine, NestJS API, PostgreSQL, Next.js dashboard; Terraform, ECS, RDS, GitHub Actions.</li>
+          <li lang="es"><strong>Constelaciones Familiares</strong> (2026): sitio con agenda online y panel de administración. SST, OpenNext, Lambda, CloudFront, DynamoDB.</li>
+          <li lang="en"><strong>Constelaciones Familiares</strong> (2026): website with online booking and admin panel. SST, OpenNext, Lambda, CloudFront, DynamoDB.</li>
+          <li lang="es"><strong>IA-Trader</strong> (2026): bot que pone a prueba estrategias sobre el S&amp;P 500 con backtest desde 2007. EventBridge, Lambda (Python), DynamoDB, S3.</li>
+          <li lang="en"><strong>IA-Trader</strong> (2026): bot that tests strategies on the S&amp;P 500 with a backtest since 2007. EventBridge, Lambda (Python), DynamoDB, S3.</li>
+          <li lang="es"><strong>Software a medida</strong> (2026): conciliación de débitos de obras sociales, certificación de obra vial por WhatsApp y lectura de medidores con OCR. React, TypeScript, Claude API.</li>
+          <li lang="en"><strong>Custom software</strong> (2026): health-insurer deduction reconciliation, road-construction certification over WhatsApp and OCR meter reading. React, TypeScript, Claude API.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2><span lang="es">Certificaciones</span><span lang="en">Certifications</span></h2>
+        <ul class="kv">
+          <li><span class="mono">DVA-C02</span><span>AWS Certified Developer – Associate</span></li>
+          <li><span class="mono">CLF-C02</span><span>AWS Certified Cloud Practitioner</span></li>
+        </ul>
+
+        <h2 style="margin-top:5mm"><span lang="es">Stack</span><span lang="en">Stack</span></h2>
+        <ul class="tags">
+          <li>TypeScript</li><li>Node.js</li><li>NestJS</li><li>React</li><li>Next.js</li><li>React Native</li><li>Python</li><li>PostgreSQL</li><li>DynamoDB</li><li>MySQL</li>
+          <li>AWS Lambda</li><li>API Gateway</li><li>EventBridge</li><li>S3</li><li>CloudFront</li><li>ECS</li><li>RDS</li><li>Terraform</li><li>SST</li><li>GitHub Actions</li><li>Claude API</li><li>CLIP</li><li>Scrum</li>
+        </ul>
+
+        <h2 style="margin-top:5mm"><span lang="es">Idiomas</span><span lang="en">Languages</span></h2>
+        <ul class="kv">
+          <li><span class="mono"><span lang="es">Español</span><span lang="en">Spanish</span></span><span lang="es">Nativo</span><span lang="en">Native</span></li>
+          <li><span class="mono"><span lang="es">Inglés</span><span lang="en">English</span></span><span lang="es">De trabajo: proyectos liderados en inglés con clientes de EE.UU.</span><span lang="en">Working proficiency: projects led in English with US clients.</span></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement, btn = document.getElementById('lang-toggle');
+      var q = /[?&]lang=(es|en)\b/.exec(location.search);
+      function set(l) { root.lang = l; root.dataset.lang = l; btn.textContent = l === 'es' ? 'EN' : 'ES'; document.title = (l === 'es' ? 'CV' : 'Résumé') + ' · Giuliano Antonanzas'; }
+      set(q ? q[1] : 'es');
+      btn.addEventListener('click', function () { set(root.dataset.lang === 'en' ? 'es' : 'en'); });
+    })();
+  </script>
+</body>
+</html>

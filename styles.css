@@ -108,6 +108,11 @@ img { max-width: 100%; display: block; }
 h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 900; line-height: .95; letter-spacing: -.04em; }
 .hero-role { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.1rem, 1.8vw, 1.4rem); margin: 1rem 0 .9rem; }
 .hero-p { color: var(--ink-2); max-width: 50ch; }
+.facts { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1.1rem; font-family: var(--font-mono); font-size: .76rem; color: var(--ink-2); }
+.facts li { display: inline-flex; align-items: center; gap: .45rem; padding: .28rem .65rem; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); }
+.facts li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
+.facts li.ok { color: var(--ink); }
+.facts li.ok::before { background: #1f9d55; box-shadow: 0 0 0 3px rgba(31, 157, 85, .18); }
 .diagram { margin: 0; }
 .arch { width: 100%; height: auto; display: block; font-family: var(--font-mono); }
 .arch .node rect { fill: var(--paper); stroke: var(--ink); stroke-width: 1.6; transition: transform .2s, fill .2s; }
@@ -124,6 +129,10 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 900; line-height: .95; 
 .arch .arrow-head { fill: var(--ink); }
 @keyframes flow { to { stroke-dashoffset: -22; } }
 .diagram figcaption { margin-top: .6rem; text-align: center; }
+
+/* ---------- Stack strip ---------- */
+.stack { margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.stack .label { margin-bottom: .2rem; }
 
 /* ---------- Metrics ---------- */
 .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin: 0; }
